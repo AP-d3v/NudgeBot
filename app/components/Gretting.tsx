@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { useEffect, useState } from 'react';
 
@@ -39,6 +40,6 @@ export default function Gretting() {
 
     },[])
   return (
-    <div>{dayPeriod}</div>
+    <div>{dayPeriod}, User</div>
   )
 }

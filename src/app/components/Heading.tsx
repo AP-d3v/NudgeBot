@@ -1,6 +1,6 @@
-import DateTime from "../DateTime";
-import Gretting from "../Gretting"
-import Title from "../Title";
+import DateTime from "./DateTime";
+import Gretting from "./Gretting"
+import Title from "./Title";
 
 import React from 'react'
 
@@ -10,8 +10,10 @@ export default function Heading() {
     <div className="flex flex-col">
         <Title />
         <div className="flex flex-row">
-            <Gretting />
-            <DateTime />
+            <div className="flex flex-col">
+              <Gretting />
+              <DateTime />
+            </div>
         </div>
     
     </div>

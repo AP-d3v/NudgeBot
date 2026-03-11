@@ -1,0 +1,20 @@
+@media (max-width: 1070px){
+    .page-elements{
+        display: flex;
+        flex-direction: column;
+    }
+    .tag-lines,.slogan{
+        text-align: center;
+        /*font-size: 60px;*/
+    }
+    .buttons{
+        display: flex;
+        justify-content: center;
+    }
+    
+}
+@media (max-width: 547px){
+    .tag-lines{
+        font-size: 60px;
+    }
+}

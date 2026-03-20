@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import ButtonLink from './components/ButtonLink';
-import './stylesheets/homepage.css'
+import './stylesheets/homepage.css';
+import {authentication} from '../lib/firebase-auth'
 
 
 //TODO: figure out how to link authentication to firebase
@@ -18,7 +21,7 @@ export default function Page() {
         <p className='tag-lines text-9xl mb-[2vw]'>Repeat.</p>
         <p className='slogan mb-[1.5vw]'>You’re a rockstar! Our automated system will make sure you never miss a gig.</p>
         <div className='buttons'>
-          <ButtonLink className='mr-[4vw]'>Create an Account</ButtonLink>
+          <ButtonLink onClick = {authentication} className='mr-[4vw]'>Create an Account</ButtonLink>
           <ButtonLink className='pl-[4vw] pr-[4vw]'>Sign In</ButtonLink>
         </div>
       </div>

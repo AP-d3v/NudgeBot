@@ -4,14 +4,14 @@ import React from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import ButtonLink from './components/ButtonLink';
 import './stylesheets/homepage.css';
-import {authentication} from '../lib/firebase-auth'
+import {authentication} from '../lib/firebase-auth';
 
 
-//TODO: figure out how to link authentication to firebase
+//TODO: add logo to title 
 export default function Page() {
   return (
     <>
-    <p className='text-4xl mb-[1vw] font-bold'>NudgeBot</p>
+    <p className='p-2 text-4xl mb-[1vw] font-bold'>NudgeBot</p>
     <div className='page-container flex items-center justify-center'>
     <div className='page-elements flex flex-row'>
       <div>
@@ -20,9 +20,8 @@ export default function Page() {
         <p className='tag-lines text-9xl'>Rezzies.</p>
         <p className='tag-lines text-9xl mb-[2vw]'>Repeat.</p>
         <p className='slogan mb-[1.5vw]'>You’re a rockstar! Our automated system will make sure you never miss a gig.</p>
-        <div className='buttons'>
-          <ButtonLink onClick = {authentication} className='mr-[4vw]'>Create an Account</ButtonLink>
-          <ButtonLink className='pl-[4vw] pr-[4vw]'>Sign In</ButtonLink>
+        <div className='flex justify-center buttons'>
+          <ButtonLink onClick = {authentication} className='mr-[4vw]'>Sign in with Google</ButtonLink>
         </div>
       </div>
       <div className='robotwrapper shrink-0'>

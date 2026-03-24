@@ -1,7 +1,9 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, UserCredential } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, UserCredential, getAdditionalUserInfo  } from "firebase/auth";
 import { FirebaseError, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { error } from "console";
+import { error, info } from "console";
+import { redirect } from 'next/navigation'
+
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -20,10 +22,12 @@ const analytics = app.name && typeof window !== 'undefined' ? getAnalytics(app) 
 const provider = new GoogleAuthProvider();
 
 //TODO
-// Implement phone number collection and name using getAdditionalUserInfo/ newuser -> redirect object you keep seeing ? 
+// fix cross origin issue
 //set up api endpoint for post to db?
+// flesh out Profile-info page
 
 const auth = getAuth();
+let newUserRedirect = false;
 
 export async function authentication(): Promise<void>{
     try {
@@ -39,7 +43,11 @@ export async function authentication(): Promise<void>{
     }
     // The signed-in user info.
     const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
+    const userInfo = getAdditionalUserInfo(result);
+    if(userInfo?.isNewUser){
+        console.log('new user');
+        newUserRedirect = true
+    }
 
 } catch (error:unknown) {
     // Handle Errors here.
@@ -52,5 +60,8 @@ export async function authentication(): Promise<void>{
     const credential = GoogleAuthProvider.credentialFromError(error);
     }
     // ...
+  }
+  if(newUserRedirect){
+    redirect('/Profile-Info');
   }
 };
